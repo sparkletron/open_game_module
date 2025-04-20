@@ -1,0 +1,29 @@
+CAPI=2:
+
+name: sparkletron:glue:open_game_module:1.0.0
+description: Glue logic that emulates the super game module using a ymz284 for audio.
+
+filesets:
+  src:
+    files:
+      - src/open_game_module.v : { file_type: verilogSource }
+
+  constr:
+    files:
+      - constr/open_game_module.sdc : { file_type: SDC }
+
+  tb:
+    files:
+      - tb/tb_open_game_module.v : { file_type: verilogSource }
+
+
+targets:
+  default: &default
+    description: Default IP target for future tool intergration.
+    filesets: [src, constr]
+
+  sim:
+    description: Simulation target for basic test bench.
+    default_tool: icarus
+    filesets_append: [src, tb]
+    toplevel: tb_open_game_module

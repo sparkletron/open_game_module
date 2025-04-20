@@ -1,0 +1,31 @@
+\documentclass[usletter]{article}
+\usepackage{DejaVuSans}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{graphics}
+\usepackage{longtable}
+\usepackage{graphics}
+\usepackage{lscape}
+\usepackage[hidelinks]{hyperref}
+\begin{document}
+
+  \include{src/common.tex}
+
+  \section{Module Documentation}
+  \par What follows are PDF pages generated from natural docs HTML pages. This documents
+  the source code used for the CPLD.
+
+  \includepdf[pages=-, addtotoc={1,subsection,1,porta\_glue\_coleco,p1}, pagecommand={}]{porta_glue_coleco-v.pdf}
+
+  \section{Schematics}
+
+  \includepdf[pages=-, addtotoc={1,subsection,1,Coleco Mini,p1}, pagecommand={}]{../../schematic/pdf/coleco_original.pdf}
+
+  \includepdf[pages=-, addtotoc={1,subsection,1,Right Angle,p1}, pagecommand={}]{../../schematic/pdf/right_angle.pdf}
+
+\end{document}

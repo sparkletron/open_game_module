@@ -1,0 +1,7 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Connector_PCBEdge_EXT")(type "KiCad")(uri "${KIPRJMOD}/lib/CONNECTOR_PCBEdge_EXT/Connector_PCBEdge_EXT.kicad_sym")(options "")(descr ""))
+  (lib (name "CPLD")(type "KiCad")(uri "${KIPRJMOD}/lib/CPLD/CPLD.kicad_sym")(options "")(descr ""))
+  (lib (name "Vintage_Audio_Synth")(type "KiCad")(uri "${KIPRJMOD}/lib/VINTAGE_AUDIO_SYNTH/Vintage_Audio_Synth.kicad_sym")(options "")(descr ""))
+  (lib (name "Vintage_RAM")(type "KiCad")(uri "${KIPRJMOD}/lib/VINTAGE_RAM/Vintage_RAM.kicad_sym")(options "")(descr ""))
+)

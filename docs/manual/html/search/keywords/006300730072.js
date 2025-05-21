@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("csr",["Assignment"],[["CSRn",,[["porta_glue_coleco",,,,0,"File:porta_glue_coleco.v:porta_glue_coleco.CSRn","SystemVerilogModule:porta_glue_coleco:CSRn"]]]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ope",["Module","File"],[["open_game_module",,[[,,,,0,"File:open_game_module.v:open_game_module","SystemVerilogModule:open_game_module"],[,"open_game_module.v",,,1,"File:open_game_module.v:open_game_module.v"]]]]);

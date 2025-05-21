@@ -4607,12 +4607,6 @@
 		(uuid "708168ac-24b3-4b5a-bbf5-6917406a3ed4")
 	)
 	(junction
-		(at 118.11 119.38)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "723c95ef-2d5c-4acd-b6b8-4062e7fffbdb")
-	)
-	(junction
 		(at 224.79 100.33)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4641,6 +4635,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a7235669-a5a2-498f-9084-fe6a3a564780")
+	)
+	(junction
+		(at 118.11 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "aa4cd0c1-4492-46c6-8c96-23213b01619c")
 	)
 	(junction
 		(at 212.09 107.95)
@@ -4701,6 +4701,10 @@
 		(uuid "3d22f291-4d27-4958-8dda-1dae50f97995")
 	)
 	(no_connect
+		(at 96.52 161.29)
+		(uuid "3e79d1a5-6ffa-4b9c-a8b3-5eb6008654bd")
+	)
+	(no_connect
 		(at 69.85 35.56)
 		(uuid "3fc6694e-a6d7-4194-bf93-508b1215be5a")
 	)
@@ -4729,10 +4733,6 @@
 		(uuid "5ae1da5d-025a-436c-8c7f-b19c2edb07b8")
 	)
 	(no_connect
-		(at 69.85 66.04)
-		(uuid "772611e8-f24e-48c8-8058-66ca7082ceca")
-	)
-	(no_connect
 		(at 57.15 101.6)
 		(uuid "87a9c666-e03b-49d5-abae-2298484155ee")
 	)
@@ -4759,6 +4759,10 @@
 	(no_connect
 		(at 69.85 38.1)
 		(uuid "bbd4e03e-49a0-4631-8163-951e041895da")
+	)
+	(no_connect
+		(at 69.85 78.74)
+		(uuid "d4ecfbf7-e3da-4c4b-a0b7-4bf81b300c68")
 	)
 	(no_connect
 		(at 257.81 83.82)
@@ -5772,7 +5776,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 111.76) (xy 118.11 101.6)
+			(xy 118.11 101.6) (xy 118.11 119.38)
 		)
 		(stroke
 			(width 0)
@@ -7291,7 +7295,7 @@
 		(uuid "0add90d0-40a7-4878-9f1b-3c88ee0258b1")
 	)
 	(label "~{CLK}"
-		(at 69.85 78.74 0)
+		(at 69.85 66.04 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7579,16 +7583,6 @@
 			(justify left bottom)
 		)
 		(uuid "50d97b13-4d18-4b72-8823-ad959c4e5645")
-	)
-	(label "DIS_MEM"
-		(at 57.15 99.06 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "51b4d2eb-0db2-49af-b419-e76752bdc55e")
 	)
 	(label "A7"
 		(at 138.43 57.15 0)
@@ -7990,6 +7984,16 @@
 		)
 		(uuid "a92cbad8-345c-4a00-8a64-381bcd22a73e")
 	)
+	(label "~{RAM_CS}"
+		(at 57.15 99.06 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "aba1c7e8-ff57-4fdc-b900-6999b491eb8d")
+	)
 	(label "D0"
 		(at 97.79 135.89 0)
 		(effects
@@ -8119,16 +8123,6 @@
 			(justify left bottom)
 		)
 		(uuid "d2af73b3-83d6-4bcb-bf7f-1b12e00146b4")
-	)
-	(label "DIS_MEM"
-		(at 96.52 161.29 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d3ee0e07-6f63-4ec9-9f54-a3c46e6cffee")
 	)
 	(label "A9"
 		(at 138.43 62.23 0)
@@ -10096,7 +10090,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 115.824 121.92 90)
 			(effects
 				(font
@@ -10297,7 +10291,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "470R"
 			(at 130.81 117.094 90)
 			(effects
 				(font
@@ -11139,75 +11133,6 @@
 			(project "open_game_module"
 				(path "/133df8f4-93e5-41fe-be91-8baec47c18ae"
 					(reference "#PWR9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 118.11 115.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e3303d66-e9ef-4c87-af21-5f64cc1b8a35")
-		(property "Reference" "C5"
-			(at 108.966 113.792 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100nF"
-			(at 108.966 116.332 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
-			(at 119.0752 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 118.11 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 118.11 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "a723b8b0-0de1-4bae-b282-344f10d15d33")
-		)
-		(pin "1"
-			(uuid "02534bc6-7a7a-4b58-9509-ae4f4273941b")
-		)
-		(instances
-			(project "open_game_module"
-				(path "/133df8f4-93e5-41fe-be91-8baec47c18ae"
-					(reference "C5")
 					(unit 1)
 				)
 			)

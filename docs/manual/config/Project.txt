@@ -80,8 +80,8 @@ Home Page: ../html/other/html.html
 # Source Code
 # ------------------------------------------------------------------------
 
-Source Folder: ../../../src/portable_coleco/src
-   Name: bus_1553
+Source Folder: ../../../src/open_game_module/src
+   Name: source
 
 
 # This is where you tell Natural Docs which folders it should scan for source

@@ -1,1 +1,1 @@
-﻿NDMenu.OnSectionLoaded("files.js",[[1,"porta_glue_coleco.v"]]);
+﻿NDMenu.OnSectionLoaded("files.js",[[1,"open_game_module.v"]]);

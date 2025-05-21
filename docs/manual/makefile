@@ -1,4 +1,4 @@
-PROJECT_NAME := mini_colecovision
+PROJECT_NAME := open_game_module
 
 MK_DIR := makefiles
 

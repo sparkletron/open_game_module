@@ -52,7 +52,6 @@
  *   RAM_WEn        - RAM write enable, active low
  *   AY_CSn         - AY sound chip chip select
  *   AY_AS          - AY data or register select
- *   DIS_MEM        - Disable internal memory when accessing external memory or if rom is disabled.
  */
 module open_game_module
   (
@@ -68,8 +67,7 @@ module open_game_module
     output        RAM_CSn,
     output        RAM_OEn,
     output        AY_CSn,
-    output        AY_AS,
-    output        DIS_MEM
+    output        AY_AS
   );
 
   integer i;
@@ -199,12 +197,6 @@ module open_game_module
    * s_ram_csn  - See Also: <s_ram_csn>
    */
   assign RAM_CSn = s_ram_csn;
-
-  /* assign: DIS_MEM
-   * Disable internal decoder so coleco RAM or ROM are not used when registers swap out internal devices
-   *
-   */
-   assign DIS_MEM = ~s_ram_csn;
 
   //****************************************************************************
   // Group: Decoder Information for Super Game Module

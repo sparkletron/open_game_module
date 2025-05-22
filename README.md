@@ -56,6 +56,6 @@
 
 ## PCB IMAGE
 
-![pcb_3D_img_front|300](docs/manual/img/3D/ogm_front.jpg)
+![pcb_3D_img_front|300](docs/manual/img/3D/ogm_top.jpg)
 
-![pcb_3D_img_back|300](docs/manual/img/3D/ogm_back.jpg)
+![pcb_3D_img_back|300](docs/manual/img/3D/ogm_bottom.jpg)

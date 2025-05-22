@@ -7,7 +7,7 @@
 
   author: Jay Convertino
 
-  date: 2024.03.24
+  date: 2025.05.21
 
   details: Open Game Module Expansion for the Coleocvision that is Super Game Module compatible.
 

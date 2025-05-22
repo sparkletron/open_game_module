@@ -1,4 +1,4 @@
-# Mini Colecovision Project with Super Game Module Support
+# Open Game Module
 ### Schematic, PCB, and CPLD design.
 
 ![image](docs/manual/img/SPARKLETRON.png)
@@ -9,7 +9,7 @@
 
   date: 2024.03.24
 
-  details: A Super Game Module Compatible Colecovision that is much smaller than the original, and only uses +5v.
+  details: Open Game Module Expansion for the Coleocvision that is Super Game Module compatible.
 
   license: MIT
 
@@ -23,49 +23,39 @@
 
 ## RELEASE VERSIONS
 ### Current
-  - 1.0.1 - Fixed opcode games AY check for super game module.
+  - 1.0.0 - First working version
 
 ### Past
-  - 1.0.0 - First working version
   - DEV
 
-### MISC
-  - std_v1 - A branch that contains the first version with standard colecovision compatibility only.
-
 ## Intro
-  This is a miniturization of the original colecovision. All logic is simplified to a single CPLD.
+  This is a open source version of the Super Game Module. This uses a CPLD for the glue logic.
 
 ## Documentation
   For detailed usage information, please navigate to one of the following sources. They are the same, just in a different format.
-  - [mini_colecovision.pdf](docs/manual/mini_colecovision.pdf)
-  - [github page](https://sparkletron.github.io/mini_colecovision/)
+  - [open_game_module.pdf](docs/manual/open_game_module.pdf)
+  - [github page](https://sparkletron.github.io/open_game_module/)
 
-## SOURCES
-### Schematic Check
-  - Righteous Tentacle Colecovision : https://github.com/sparkletron/righteous_tentacle_colecovision : Jay Convertino
 
 ## SOFTWARE REQUIREMENTS
-  - KiCAD v7.X
+  - KiCAD v8.X
   - Quartus v13.0.1sp1 web edition
   - Altera USB Blaster
 
 ## BUILD TIPS
   This design is made so anyone can build this. Though it will need a board from a PCB manufacture due to the small pitch and
-  vias. There are only a few SMD devices, the CPU, a cap, and a few resistors. These are larger to help make soldering easier.
+  vias. There are only a few SMD devices, the CPLD, and a few resistors. These are larger to help make soldering easier.
 
-  Recommend populating the SMD parts first, then moving on to the through hole parts from passive to active. If you do not plan
-  on using a battery pack the shotkey diodes can be omitted.
-
-  This is a 4 layer board, power and ground planes are run on the two internal planes.
+  Recommend populating the SMD parts first, then moving on to the through hole parts from passive to active.
 
   All case parts are ABS Plastic.
 
 ## Completed Project Image
 
-![coleco|300](img/case/PXL_20241008_020323802.jpg)
+![ogm|300](docs/manual/img/case/ogm.jpg)
 
 ## PCB IMAGE
 
-![pcb_3D_img_front|300](img/3D/coleco_original_front.jpg)
+![pcb_3D_img_front|300](docs/manual/img/3D/ogm_front.jpg)
 
-![pcb_3D_img_back|300](img/3D/coleco_original_back.jpg)
+![pcb_3D_img_back|300](docs/manual/img/3D/ogm_back.jpg)

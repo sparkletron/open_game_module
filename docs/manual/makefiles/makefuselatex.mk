@@ -1,5 +1,5 @@
 PYTHON_APP=py/gen_fusesoc_latex_info.py
-SRC_DIR=../../src/portable_coleco/
+SRC_DIR=../../src/open_game_module/
 OUTPUT_DIR=src/fusesoc
 
 FUSESOC_CORE_SRC=$(wildcard $(SRC_DIR)*.core)
@@ -11,9 +11,9 @@ all: $(LATEX_OUTPUT)
 
 %.tex: $(SRC_DIR)%.core
 	@echo $@
-	python3 $(PYTHON_APP) --core_file $< --prime_key_filter filesets --sub_key_filter files   	--list_name "Protable Coleco Glue File List"  --output $(OUTPUT_DIR)/$(addprefix files_,$@)
-	python3 $(PYTHON_APP) --core_file $< --prime_key_filter filesets --sub_key_filter depend  	--list_name "Protable Coleco Glue Depenecies" --output $(OUTPUT_DIR)/$(addprefix depend_,$@)
-	python3 $(PYTHON_APP) --core_file $< --prime_key_filter targets  --sub_key_filter description 	--list_name "Protable Coleco Glue Targets" 	--output $(OUTPUT_DIR)/$(addprefix targets_,$@)
+	python3 $(PYTHON_APP) --core_file $< --prime_key_filter filesets --sub_key_filter files   	--list_name "Open Game Module Glue File List"  --output $(OUTPUT_DIR)/$(addprefix files_,$@)
+	python3 $(PYTHON_APP) --core_file $< --prime_key_filter filesets --sub_key_filter depend  	--list_name "Open Game Module Glue Depenecies" --output $(OUTPUT_DIR)/$(addprefix depend_,$@)
+	python3 $(PYTHON_APP) --core_file $< --prime_key_filter targets  --sub_key_filter description 	--list_name "Open Game Module Glue Targets" 	--output $(OUTPUT_DIR)/$(addprefix targets_,$@)
 
 clean:
 	rm -rf $(OUTPUT_DIR)/*

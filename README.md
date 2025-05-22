@@ -52,10 +52,10 @@
 
 ## Completed Project Image
 
-![ogm|300](docs/manual/img/case/ogm.jpg)
+![ogm|300](docs/manual/img/case/ogm.png)
 
 ## PCB IMAGE
 
-![pcb_3D_img_front|300](docs/manual/img/3D/ogm_top.jpg)
+![pcb_3D_img_front|300](docs/manual/img/ogm_top.png)
 
-![pcb_3D_img_back|300](docs/manual/img/3D/ogm_bottom.jpg)
+![pcb_3D_img_back|300](docs/manual/img/ogm_bottom.png)

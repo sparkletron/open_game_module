@@ -7,6 +7,11 @@ $cached_env_img{$key} = q|<IMG
  STYLE="height: 0.23ex; vertical-align: -0.12ex; " SRC="|."$dir".q|open_game_module_img2.svg"
  ALT="$ $">|; 
 
+$key = q/includegraphics[width=0.50textwidth,keepaspectratio]{imgslashSPARKLETRON.png};AAT/;
+$cached_env_img{$key} = q|<IMG
+ STYLE="height: 3.47ex; vertical-align: -0.12ex; " SRC="|."$dir".q|open_game_module_img5.svg"
+ ALT="\includegraphics[width=0.50\textwidth,keepaspectratio]{img/SPARKLETRON.png}">|; 
+
 $key = q/includegraphics[width=0.90textwidth,height=textheight,keepaspectratio]{imgslashSPARKLETRON.png};AAT/;
 $cached_env_img{$key} = q|<IMG
  STYLE="height: 6.06ex; vertical-align: -0.12ex; " SRC="|."$dir".q|open_game_module_img1.svg"

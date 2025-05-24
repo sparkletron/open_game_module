@@ -32,7 +32,7 @@
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A>  
 <BR>
 <B> Next:</B> <A
- HREF="open_game_module_node21.html">Assembly Code For Init</A>
+ HREF="open_game_module_node21.html">Assembly Code For RAM</A>
 <B> Up:</B> <A
  HREF="open_game_module_node18.html">Usage</A>
 <B> Previous:</B> <A
@@ -48,7 +48,22 @@ Software Programming</A>
 </H2>
 
 <P>
-Module Documentation has in-depth details for using the open game module and register bits. The psudo code steps are as follows.
+Module Documentation has indepth details for using the open game module and register bits. You could do this in many different ways, but
+having the SDCC compiler know ahead of time that the RAM is there works well for me. There are different stragies that could be done for this
+but I feel this is the simplest way. Other methods can provide better detection of the OGM. The psudo code steps are as follows.
+
+<P>
+
+<OL>
+<LI>Setup expansion RAM, (NOTE COULD CHECK IF REGISTER VALUE IS EQUAL TO THE DEFAULT TO VERIFY SGM)
+</LI>
+<LI>Setup IRQS
+</LI>
+<LI>Copy IRQs to RAM where ROM jumps used to be.
+</LI>
+<LI>Setup Sound CHIP, (READ BACK TO CHECK EXISTANCE)
+</LI>
+</OL>
 
 <P>
 <BR><HR>
@@ -57,7 +72,7 @@ Module Documentation has in-depth details for using the open game module and reg
 
 <UL CLASS="ChildLinks">
 <LI><A ID="tex2html111"
-  HREF="open_game_module_node21.html">Assembly Code For Init</A>
+  HREF="open_game_module_node21.html">Assembly Code For RAM Init</A>
 <LI><A ID="tex2html112"
   HREF="open_game_module_node22.html">C Code for SDCC</A>
 </UL>

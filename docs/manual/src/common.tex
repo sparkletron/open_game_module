@@ -237,9 +237,111 @@ to clean the connectors.
 
 \subsection{Software Programming}
 \par
-Module Documentation has in-depth details for using the open game module and register bits. The psudo code steps are as follows.
+Module Documentation has in\-depth details for using the open game module and register bits. You could do this in many different ways, but
+having the SDCC compiler know ahead of time that the RAM is there works well for me. There are different stragies that could be done for this
+but I feel this is the simplest way. Other methods can provide better detection of the OGM. The psudo code steps are as follows.
 
+\begin{enumerate}
+  \item Setup expansion RAM, (NOTE COULD CHECK IF REGISTER VALUE IS EQUAL TO THE DEFAULT TO VERIFY SGM)
+  \item Setup IRQS
+  \item Copy IRQs to RAM where ROM jumps used to be.
+  \item Setup Sound CHIP, (READ BACK TO CHECK EXISTANCE)
+\end{enumerate}
 
-\subsubsection{Assembly Code For Init}
+\subsubsection{Assembly Code For RAM Init}
+
+\par
+This brief assembly code doesn't actually check for the SGM it simply enables the ram registers, sets the irqs, and starts main. This code is taken
+from RODAC and isn't complete, see RODAC coleco\_sgm arch crt0.s for complete code. I does give a decent idea on how to set the SGM registers for RAM.
+
+\begin{lstlisting}[language={[x86masm]Assembler}]
+_SGM_RAM_ENA_PORT     .equ 0x0053
+_SGM_BIOS_SWAP_PORT   .equ 0x007F
+_NMI_SIZE             .equ (_irq_nmi_end - _irq_nmi + 1)
+_SPIN_SIZE            .equ (_irq_spin_end - _irq_spin + 1)
+;setup for super game module.
+ld a,#0x01
+out (_SGM_RAM_ENA_PORT), a
+ld a,#0x0D
+out (_SGM_BIOS_SWAP_PORT), a
+;setup ram locations with irq vectors?, 0x8 etc.
+;reti
+ld a,#0xED
+ld (0x08),a
+ld (0x10),a
+ld (0x18),a
+ld (0x20),a
+ld (0x28),a
+ld (0x30),a
+ld a,#0x4D
+ld (0x09),a
+ld (0x11),a
+ld (0x19),a
+ld (0x21),a
+ld (0x29),a
+ld (0x31),a
+;copy code to ram
+;nmi first
+ld bc, #_NMI_SIZE
+ld hl, #_irq_nmi
+ld de, #0x0066
+ldir
+;spin
+ld bc, #_SPIN_SIZE
+ld hl, #_irq_spin
+ld de, #0x0038
+ldir
+ld	sp, #0x8000
+call gsinit
+call  _main
+rst   0x0
+\end{lstlisting}
 
 \subsubsection{C Code for SDCC}
+
+\par
+The code below is based on using SDCC 4.X.X as the C complier with a custom crt0.s. Essentially for the sound chip you
+need to communicate with it by writing to the ports a address, then the data. You can also read from the ports to
+verify the chip exists and that the OGM is working. Though for the OGM its chip does not have a read function. It is
+emulated for registers 0, 2, and 4 (0=1, 2=3, and 4=5) in the CPLD so all opcode/team pixelboy games will startup correctly.
+
+\begin{lstlisting}[language=C]
+
+#define GI_SND_CP_ADDR    0x50
+#define GI_SND_WDATA_ADDR 0x51
+#define GI_SND_RDATA_ADDR 0x52
+
+__sfr __at(GI_SND_CP_ADDR)    GI_SND_CP_PORT;
+__sfr __at(GI_SND_WDATA_ADDR) GI_SND_WDATA_PORT;
+__sfr __at(GI_SND_RDATA_ADDR) GI_SND_RDATA_PORT;
+
+/*** send address to chip ***/
+inline void sendAddr(uint8_t addr)
+{
+  di();
+
+  GI_SND_CP_PORT = addr;
+
+  ei();
+}
+
+/*** send data to chip ***/
+inline void sendData(uint8_t data)
+{
+  di();
+
+  GI_SND_WDATA_PORT = data;
+
+  ei();
+}
+
+/*** send data to chip ***/
+inline void readData(uint8_t data)
+{
+  di();
+
+  data = GI_SND_RDATA_PORT;
+
+  ei();
+}
+\end{lstlisting}

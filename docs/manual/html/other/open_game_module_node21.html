@@ -3,7 +3,7 @@
 <!--Converted with LaTeX2HTML 2024 (Released January 1, 2024) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Assembly Code For Init</TITLE>
+<TITLE>Assembly Code For RAM Init</TITLE>
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
@@ -45,8 +45,58 @@
 <!--End of Navigation Panel-->
 
 <H3><A ID="SECTION00042100000000000000">
-Assembly Code For Init</A>
+Assembly Code For RAM Init</A>
 </H3>
+
+<P>
+This brief assembly code doesn't actually check for the SGM it simply enables the ram registers, sets the irqs, and starts main. This code is taken
+from RODAC and isn't complete, see RODAC coleco_sgm arch crt0.s for complete code. I does give a decent idea on how to set the SGM registers for RAM.
+
+<P>
+<TABLE FRAME="VOID" CELLPADDING="4"><TR><TD>
+<PRE>
+_SGM_RAM_ENA_PORT     .equ 0x0053
+_SGM_BIOS_SWAP_PORT   .equ 0x007F
+_NMI_SIZE             .equ (_irq_nmi_end - _irq_nmi + 1)
+_SPIN_SIZE            .equ (_irq_spin_end - _irq_spin + 1)
+;setup for super game module.
+ld a,#0x01
+out (_SGM_RAM_ENA_PORT), a
+ld a,#0x0D
+out (_SGM_BIOS_SWAP_PORT), a
+;setup ram locations with irq vectors?, 0x8 etc.
+;reti
+ld a,#0xED
+ld (0x08),a
+ld (0x10),a
+ld (0x18),a
+ld (0x20),a
+ld (0x28),a
+ld (0x30),a
+ld a,#0x4D
+ld (0x09),a
+ld (0x11),a
+ld (0x19),a
+ld (0x21),a
+ld (0x29),a
+ld (0x31),a
+;copy code to ram
+;nmi first
+ld bc, #_NMI_SIZE
+ld hl, #_irq_nmi
+ld de, #0x0066
+ldir
+;spin
+ld bc, #_SPIN_SIZE
+ld hl, #_irq_spin
+ld de, #0x0038
+ldir
+ld	sp, #0x8000
+call gsinit
+call  _main
+rst   0x0
+</PRE>
+</TD></TR></TABLE>
 
 <P>
 <BR><HR>

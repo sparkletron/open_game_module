@@ -128,6 +128,30 @@ steps to build the Mini Colecovision
   \item Build your own case
 \end{itemize}
 
+\subsection{Directory Guide}
+
+\par
+Below highlights important folders from the root of the open\_game\_module.
+
+\begin{enumerate}
+  \item \textbf{docs} Contains all documentation related to this project.
+    \begin{itemize}
+      \item \textbf{datasheets} Contains all datasheets for components.
+      \item \textbf{manual} Contains user manual and github page that are generated from the latex sources.
+    \end{itemize}
+  \item \textbf{img} Contains images of the project
+  \item \textbf{schematic} KiCAD v8.X schematic and PCB designs
+    \begin{itemize}
+      \item \textbf{gerber} Contains gerber files and archives for production.
+      \item \textbf{pdf} PDF schematic
+    \end{itemize}
+  \item \textbf{src} CPLD firmware source
+    \begin{itemize}
+      \item \textbf{open\_game\_module} Contains verilog source code and constraits
+      \item \textbf{quartus13sp01} Quartus project used to generate firmware.
+    \end{itemize}
+\end{enumerate}
+
 \subsection{Dependencies}
 
 \par
@@ -187,14 +211,11 @@ In general I recommend the following steps for assembly.
   \item Top, sit top half on top and install screws.
 \end{enumerate}
 
-\subsection{Programming}
+\subsection{CPLD Programming}
 
 \par
 There is one device that need to be programmed which is the CPLD (complex programmable logic device).
 This is programmed with quartus using the JTAG header to upload the bitfile.
-
-\subsubsection{CPLD}
-
 \par
 Quartus 13.0sp1 is the easiest way to build and program the MAX7000 CPLD. You will need an altera blaster.
 I recommend the chinese clone blasters, they actually worked the best. While the worst was the Terasic blaster
@@ -204,6 +225,7 @@ which did not work at all. As for instructions on how to program it in Quartus, 
 
 \section{Usage}
 
+\subsection{Console}
 \par
 The expansion module must be firmly inserted into the expansion connector of the Colecovision. If you have issues, be sure
 to clean the connectors.
@@ -213,26 +235,11 @@ to clean the connectors.
   \item \textbf{Insert Open Game Module} \includegraphics[width=0.50\textwidth,keepaspectratio]{img/SPARKLETRON.png}
 \end{enumerate}
 
-\subsection{Directory Guide}
-
+\subsection{Software Programming}
 \par
-Below highlights important folders from the root of the open\_game\_module.
+Module Documentation has in-depth details for using the open game module and register bits. The psudo code steps are as follows.
 
-\begin{enumerate}
-  \item \textbf{docs} Contains all documentation related to this project.
-    \begin{itemize}
-      \item \textbf{datasheets} Contains all datasheets for components.
-      \item \textbf{manual} Contains user manual and github page that are generated from the latex sources.
-    \end{itemize}
-  \item \textbf{img} Contains images of the project
-  \item \textbf{schematic} KiCAD v8.X schematic and PCB designs
-    \begin{itemize}
-      \item \textbf{gerber} Contains gerber files and archives for production.
-      \item \textbf{pdf} PDF schematic
-    \end{itemize}
-  \item \textbf{src} CPLD firmware source
-    \begin{itemize}
-      \item \textbf{open\_game\_module} Contains verilog source code and constraits
-      \item \textbf{quartus13sp01} Quartus project used to generate firmware.
-    \end{itemize}
-\end{enumerate}
+
+\subsubsection{Assembly Code For Init}
+
+\subsubsection{C Code for SDCC}

@@ -4772,7 +4772,7 @@
 			(pintype "input")
 			(uuid "f0044572-8767-4271-978f-b6093fcf1941")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Package_LCC.3dshapes/PLCC-44.wrl"
+		(model "${KIPRJMOD}/model/User Library-PLCC44-1.STEP"
 			(offset
 				(xyz 0 0 0)
 			)

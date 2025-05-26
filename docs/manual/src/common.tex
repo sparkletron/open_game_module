@@ -29,37 +29,6 @@ Open Game Module is a open source expansion card for the Colecovision. This modu
 This means all SGM games will run when this module is used with a Colecovision. The sound is expanded with a Yamaha YMZ284
 instead of the GI AY chip.
 
-\subsection{Fix for opcode games}
-
-Opcode super game module mega cart games have a particular check for the sound chip in there startup routine.
-
-\begin{enumerate}
-  \item Set AY register address to 0x00
-  \item Write the value 0xAA to AY (register 0x00).
-  \item Set AY register address to 0x02
-  \item Write the value 0x55 to AY (register 0x02).
-  \item Set AY register address to 0x00
-  \item Read the value from AY (register 0x00).
-  \item Compare to value originally written (0xAA), fail if not matching
-  \item Set AY register address to 0x02
-  \item Read the value from AY (register 0x02).
-  \item Compare to value originally written (0x55), fail if not matching.
-\end{enumerate}
-
-The hack fix for my setup is to only have 4 8 bit regiters for 0,1,2,3,4,5,6, and 7. The mapping is
-AY Software Register ADDRESS => Cache Register ADDRESS
-
-\begin{itemize}
-  \item 0 => 0
-  \item 1 => 0
-  \item 2 => 1
-  \item 3 => 1
-  \item 4 => 2
-  \item 5 => 2
-  \item 6 => 3
-  \item 7 => 3
-\end{itemize}
-
 \subsection{Specifications}
 
 \par
@@ -252,7 +221,7 @@ but I feel this is the simplest way. Other methods can provide better detection 
 
 \par
 This brief assembly code doesn't actually check for the SGM it simply enables the ram registers, sets the irqs, and starts main. This code is taken
-from RODAC and isn't complete, see RODAC coleco\_sgm arch crt0.s for complete code. I does give a decent idea on how to set the SGM registers for RAM.
+from RODAC and isn't complete, see RODAC coleco\_sgm arch crt0.s for complete code.
 
 \begin{lstlisting}[language={[x86masm]Assembler}]
 _SGM_RAM_ENA_PORT     .equ 0x0053
@@ -345,3 +314,39 @@ inline void readData(uint8_t data)
   ei();
 }
 \end{lstlisting}
+
+\section{Architecture}
+
+\par
+The OGM architecture emulates the Super Game Module. This is done with a CPLD which performs the RAM (32KiB) and sound (YMZ284) selects. It also caches the the sound writes for later reads. For the RAM selects this is done by emulating the original 74LS138 decoders. This is used to disable the internal RAM with the register at 0x53 by writing one to bit zero. This will remove the internal 1KiB and extend the console to 24KiB. Then to swap out the ROM for RAM for an additional 8KiB the register 0x7F has a zero written to bit one (default value for the register is 0x0F). For the sound, all writes have an address cache to store the last address requested. This is due to the architecture of the original chip where the address is selected and then a read is performed. With the address set a subset of the register addresses are mapped to cache registers on the CPLD. See the section after this one for the mapping. This allows the cheaper YMZ284 to be used for sound generation. There are two resistors used to pad the output of the YMZ284 for acceptable levels when mixed with the original in the console. The console internally has a DC blocking capacitor, so no additional capacitors are needed.
+
+\subsection{Fix for opcode games}
+
+Opcode super game module mega cart games have a particular check for the sound chip in there startup routine.
+
+\begin{enumerate}
+  \item Set AY register address to 0x00
+  \item Write the value 0xAA to AY (register 0x00).
+  \item Set AY register address to 0x02
+  \item Write the value 0x55 to AY (register 0x02).
+  \item Set AY register address to 0x00
+  \item Read the value from AY (register 0x00).
+  \item Compare to value originally written (0xAA), fail if not matching
+  \item Set AY register address to 0x02
+  \item Read the value from AY (register 0x02).
+  \item Compare to value originally written (0x55), fail if not matching.
+\end{enumerate}
+
+The hack fix for my setup is to only have 4 8 bit regiters for 0,1,2,3,4,5,6, and 7. The mapping is
+AY Software Register ADDRESS => Cache Register ADDRESS
+
+\begin{itemize}
+  \item 0 => 0
+  \item 1 => 0
+  \item 2 => 1
+  \item 3 => 1
+  \item 4 => 2
+  \item 5 => 2
+  \item 6 => 3
+  \item 7 => 3
+\end{itemize}

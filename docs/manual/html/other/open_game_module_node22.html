@@ -3,7 +3,7 @@
 <!--Converted with LaTeX2HTML 2024 (Released January 1, 2024) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>C Code for SDCC</TITLE>
+<TITLE>Architecture</TITLE>
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
@@ -11,7 +11,8 @@
 
 <LINK REL="STYLESHEET" HREF="html.css">
 
-<LINK REL="previous" HREF="open_game_module_node21.html">
+<LINK REL="next" HREF="open_game_module_node24.html">
+<LINK REL="previous" HREF="open_game_module_node17.html">
 <LINK REL="next" HREF="open_game_module_node23.html">
 </HEAD>
 
@@ -22,82 +23,44 @@
  HREF="open_game_module_node23.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="open_game_module_node20.html">
+ HREF="html.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="open_game_module_node21.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html115"
+<A ID="tex2html116"
   HREF="open_game_module_node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A>  
 <BR>
 <B> Next:</B> <A
- HREF="open_game_module_node23.html">Module Documentation</A>
+ HREF="open_game_module_node23.html">Fix for opcode games</A>
 <B> Up:</B> <A
- HREF="open_game_module_node20.html">Software Programming</A>
+ HREF="html.html">html</A>
 <B> Previous:</B> <A
- HREF="open_game_module_node21.html">Assembly Code For RAM</A>
- &nbsp; <B>  <A ID="tex2html116"
+ HREF="open_game_module_node21.html">C Code for SDCC</A>
+ &nbsp; <B>  <A ID="tex2html117"
   HREF="open_game_module_node1.html">Contents</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H3><A ID="SECTION00042200000000000000">
-C Code for SDCC</A>
-</H3>
+<H1><A ID="SECTION00050000000000000000">
+Architecture</A>
+</H1>
 
 <P>
-The code below is based on using SDCC 4.X.X as the C complier with a custom crt0.s. Essentially for the sound chip you
-need to communicate with it by writing to the ports a address, then the data. You can also read from the ports to
-verify the chip exists and that the OGM is working. Though for the OGM its chip does not have a read function. It is
-emulated for registers 0, 2, and 4 (0=1, 2=3, and 4=5) in the CPLD so all opcode/team pixelboy games will startup correctly.
+The OGM architecture emulates the Super Game Module. This is done with a CPLD which performs the RAM (32KiB) and sound (YMZ284) selects. It also caches the the sound writes for later reads. For the RAM selects this is done by emulating the original 74LS138 decoders. This is used to disable the internal RAM with the register at 0x53 by writing one to bit zero. This will remove the internal 1KiB and extend the console to 24KiB. Then to swap out the ROM for RAM for an additional 8KiB the register 0x7F has a zero written to bit one (default value for the register is 0x0F). For the sound, all writes have an address cache to store the last address requested. This is due to the architecture of the original chip where the address is selected and then a read is performed. With the address set a subset of the register addresses are mapped to cache registers on the CPLD. See the section after this one for the mapping. This allows the cheaper YMZ284 to be used for sound generation. There are two resistors used to pad the output of the YMZ284 for acceptable levels when mixed with the original in the console. The console internally has a DC blocking capacitor, so no additional capacitors are needed.
 
 <P>
-<TABLE FRAME="VOID" CELLPADDING="4"><TR><TD>
-<PRE>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-#define GI_SND_CP_ADDR    0x50
-#define GI_SND_WDATA_ADDR 0x51
-#define GI_SND_RDATA_ADDR 0x52
-
-__sfr __at(GI_SND_CP_ADDR)    GI_SND_CP_PORT;
-__sfr __at(GI_SND_WDATA_ADDR) GI_SND_WDATA_PORT;
-__sfr __at(GI_SND_RDATA_ADDR) GI_SND_RDATA_PORT;
-
-/*** send address to chip ***/
-inline void sendAddr(uint8_t addr)
-{
-  di();
-
-  GI_SND_CP_PORT = addr;
-
-  ei();
-}
-
-/*** send data to chip ***/
-inline void sendData(uint8_t data)
-{
-  di();
-
-  GI_SND_WDATA_PORT = data;
-
-  ei();
-}
-
-/*** send data to chip ***/
-inline void readData(uint8_t data)
-{
-  di();
-
-  data = GI_SND_RDATA_PORT;
-
-  ei();
-}
-</PRE>
-</TD></TR></TABLE>
-
-<P>
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html118"
+  HREF="open_game_module_node23.html">Fix for opcode games</A>
+</UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

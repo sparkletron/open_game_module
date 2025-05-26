@@ -3,7 +3,7 @@
 <!--Converted with LaTeX2HTML 2024 (Released January 1, 2024) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Assembly Code For RAM Init</TITLE>
+<TITLE>C Code for SDCC</TITLE>
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
@@ -11,7 +11,6 @@
 
 <LINK REL="STYLESHEET" HREF="html.css">
 
-<LINK REL="next" HREF="open_game_module_node22.html">
 <LINK REL="previous" HREF="open_game_module_node20.html">
 <LINK REL="next" HREF="open_game_module_node22.html">
 </HEAD>
@@ -23,78 +22,78 @@
  HREF="open_game_module_node22.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="open_game_module_node20.html">
+ HREF="open_game_module_node19.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="open_game_module_node20.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html113"
+<A ID="tex2html114"
   HREF="open_game_module_node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A>  
 <BR>
 <B> Next:</B> <A
- HREF="open_game_module_node22.html">C Code for SDCC</A>
+ HREF="open_game_module_node22.html">Architecture</A>
 <B> Up:</B> <A
- HREF="open_game_module_node20.html">Software Programming</A>
+ HREF="open_game_module_node19.html">Software Programming</A>
 <B> Previous:</B> <A
- HREF="open_game_module_node20.html">Software Programming</A>
- &nbsp; <B>  <A ID="tex2html114"
+ HREF="open_game_module_node20.html">Assembly Code For RAM</A>
+ &nbsp; <B>  <A ID="tex2html115"
   HREF="open_game_module_node1.html">Contents</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H3><A ID="SECTION00042100000000000000">
-Assembly Code For RAM Init</A>
+<H3><A ID="SECTION00042200000000000000">
+C Code for SDCC</A>
 </H3>
 
 <P>
-This brief assembly code doesn't actually check for the SGM it simply enables the ram registers, sets the irqs, and starts main. This code is taken
-from RODAC and isn't complete, see RODAC coleco_sgm arch crt0.s for complete code. I does give a decent idea on how to set the SGM registers for RAM.
+The code below is based on using SDCC 4.X.X as the C complier with a custom crt0.s. Essentially for the sound chip you
+need to communicate with it by writing to the ports a address, then the data. You can also read from the ports to
+verify the chip exists and that the OGM is working. Though for the OGM its chip does not have a read function. It is
+emulated for registers 0, 2, and 4 (0=1, 2=3, and 4=5) in the CPLD so all opcode/team pixelboy games will startup correctly.
 
 <P>
 <TABLE FRAME="VOID" CELLPADDING="4"><TR><TD>
 <PRE>
-_SGM_RAM_ENA_PORT     .equ 0x0053
-_SGM_BIOS_SWAP_PORT   .equ 0x007F
-_NMI_SIZE             .equ (_irq_nmi_end - _irq_nmi + 1)
-_SPIN_SIZE            .equ (_irq_spin_end - _irq_spin + 1)
-;setup for super game module.
-ld a,#0x01
-out (_SGM_RAM_ENA_PORT), a
-ld a,#0x0D
-out (_SGM_BIOS_SWAP_PORT), a
-;setup ram locations with irq vectors?, 0x8 etc.
-;reti
-ld a,#0xED
-ld (0x08),a
-ld (0x10),a
-ld (0x18),a
-ld (0x20),a
-ld (0x28),a
-ld (0x30),a
-ld a,#0x4D
-ld (0x09),a
-ld (0x11),a
-ld (0x19),a
-ld (0x21),a
-ld (0x29),a
-ld (0x31),a
-;copy code to ram
-;nmi first
-ld bc, #_NMI_SIZE
-ld hl, #_irq_nmi
-ld de, #0x0066
-ldir
-;spin
-ld bc, #_SPIN_SIZE
-ld hl, #_irq_spin
-ld de, #0x0038
-ldir
-ld	sp, #0x8000
-call gsinit
-call  _main
-rst   0x0
+
+#define GI_SND_CP_ADDR    0x50
+#define GI_SND_WDATA_ADDR 0x51
+#define GI_SND_RDATA_ADDR 0x52
+
+__sfr __at(GI_SND_CP_ADDR)    GI_SND_CP_PORT;
+__sfr __at(GI_SND_WDATA_ADDR) GI_SND_WDATA_PORT;
+__sfr __at(GI_SND_RDATA_ADDR) GI_SND_RDATA_PORT;
+
+/*** send address to chip ***/
+inline void sendAddr(uint8_t addr)
+{
+  di();
+
+  GI_SND_CP_PORT = addr;
+
+  ei();
+}
+
+/*** send data to chip ***/
+inline void sendData(uint8_t data)
+{
+  di();
+
+  GI_SND_WDATA_PORT = data;
+
+  ei();
+}
+
+/*** send data to chip ***/
+inline void readData(uint8_t data)
+{
+  di();
+
+  data = GI_SND_RDATA_PORT;
+
+  ei();
+}
 </PRE>
 </TD></TR></TABLE>
 

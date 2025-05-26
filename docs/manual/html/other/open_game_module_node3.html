@@ -3,7 +3,7 @@
 <!--Converted with LaTeX2HTML 2024 (Released January 1, 2024) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Fix for opcode games</TITLE>
+<TITLE>Specifications</TITLE>
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
@@ -28,76 +28,36 @@
 <A
  HREF="open_game_module_node2.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html56"
+<A ID="tex2html57"
   HREF="open_game_module_node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A>  
 <BR>
 <B> Next:</B> <A
- HREF="open_game_module_node4.html">Specifications</A>
+ HREF="open_game_module_node4.html">Parts List</A>
 <B> Up:</B> <A
  HREF="open_game_module_node2.html">Introduction</A>
 <B> Previous:</B> <A
  HREF="open_game_module_node2.html">Introduction</A>
- &nbsp; <B>  <A ID="tex2html57"
+ &nbsp; <B>  <A ID="tex2html58"
   HREF="open_game_module_node1.html">Contents</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
 <H2><A ID="SECTION00021000000000000000">
-Fix for opcode games</A>
+Specifications</A>
 </H2>
-
-<P>
-Opcode super game module mega cart games have a particular check for the sound chip in there startup routine.
-
-<P>
-
-<OL>
-<LI>Set AY register address to 0x00
-</LI>
-<LI>Write the value 0xAA to AY (register 0x00).
-</LI>
-<LI>Set AY register address to 0x02
-</LI>
-<LI>Write the value 0x55 to AY (register 0x02).
-</LI>
-<LI>Set AY register address to 0x00
-</LI>
-<LI>Read the value from AY (register 0x00).
-</LI>
-<LI>Compare to value originally written (0xAA), fail if not matching
-</LI>
-<LI>Set AY register address to 0x02
-</LI>
-<LI>Read the value from AY (register 0x02).
-</LI>
-<LI>Compare to value originally written (0x55), fail if not matching.
-</LI>
-</OL>
-
-<P>
-The hack fix for my setup is to only have 4 8 bit regiters for 0,1,2,3,4,5,6, and 7. The mapping is
-AY Software Register ADDRESS =&gt; Cache Register ADDRESS
 
 <P>
 
 <UL>
-<LI>0 =&gt; 0
+<LI>32 KB of RAM
 </LI>
-<LI>1 =&gt; 0
+<LI>YMZ284 Sound Chip
 </LI>
-<LI>2 =&gt; 1
+<LI>MAX7000S CPLD (EPM7064SLC)
 </LI>
-<LI>3 =&gt; 1
-</LI>
-<LI>4 =&gt; 2
-</LI>
-<LI>5 =&gt; 2
-</LI>
-<LI>6 =&gt; 3
-</LI>
-<LI>7 =&gt; 3
+<LI>PCB, two layer
 </LI>
 </UL>
 

@@ -3,7 +3,7 @@
 <!--Converted with LaTeX2HTML 2024 (Released January 1, 2024) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Module Documentation</TITLE>
+<TITLE>Fix for opcode games</TITLE>
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
@@ -11,8 +11,7 @@
 
 <LINK REL="STYLESHEET" HREF="html.css">
 
-<LINK REL="next" HREF="open_game_module_node25.html">
-<LINK REL="previous" HREF="open_game_module_node18.html">
+<LINK REL="previous" HREF="open_game_module_node22.html">
 <LINK REL="next" HREF="open_game_module_node24.html">
 </HEAD>
 
@@ -23,45 +22,85 @@
  HREF="open_game_module_node24.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="html.html">
+ HREF="open_game_module_node22.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="open_game_module_node22.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html117"
+<A ID="tex2html119"
   HREF="open_game_module_node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A>  
 <BR>
 <B> Next:</B> <A
- HREF="open_game_module_node24.html">Open Game Module</A>
+ HREF="open_game_module_node24.html">Module Documentation</A>
 <B> Up:</B> <A
- HREF="html.html">html</A>
+ HREF="open_game_module_node22.html">Architecture</A>
 <B> Previous:</B> <A
- HREF="open_game_module_node22.html">C Code for SDCC</A>
- &nbsp; <B>  <A ID="tex2html118"
+ HREF="open_game_module_node22.html">Architecture</A>
+ &nbsp; <B>  <A ID="tex2html120"
   HREF="open_game_module_node1.html">Contents</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00050000000000000000">
-Module Documentation</A>
-</H1>
-  
-<P>
-What follows are html links to the natural docs generated pages. This documents
-  the source code used for the CPLD.
+<H2><A ID="SECTION00051000000000000000">
+Fix for opcode games</A>
+</H2>
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+Opcode super game module mega cart games have a particular check for the sound chip in there startup routine.
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html119"
-  HREF="open_game_module_node24.html"><a href="../files/open_game_module-v.html">Open Game Module</a></A>
+<P>
+
+<OL>
+<LI>Set AY register address to 0x00
+</LI>
+<LI>Write the value 0xAA to AY (register 0x00).
+</LI>
+<LI>Set AY register address to 0x02
+</LI>
+<LI>Write the value 0x55 to AY (register 0x02).
+</LI>
+<LI>Set AY register address to 0x00
+</LI>
+<LI>Read the value from AY (register 0x00).
+</LI>
+<LI>Compare to value originally written (0xAA), fail if not matching
+</LI>
+<LI>Set AY register address to 0x02
+</LI>
+<LI>Read the value from AY (register 0x02).
+</LI>
+<LI>Compare to value originally written (0x55), fail if not matching.
+</LI>
+</OL>
+
+<P>
+The hack fix for my setup is to only have 4 8 bit regiters for 0,1,2,3,4,5,6, and 7. The mapping is
+AY Software Register ADDRESS =&gt; Cache Register ADDRESS
+
+<P>
+
+<UL>
+<LI>0 =&gt; 0
+</LI>
+<LI>1 =&gt; 0
+</LI>
+<LI>2 =&gt; 1
+</LI>
+<LI>3 =&gt; 1
+</LI>
+<LI>4 =&gt; 2
+</LI>
+<LI>5 =&gt; 2
+</LI>
+<LI>6 =&gt; 3
+</LI>
+<LI>7 =&gt; 3
+</LI>
 </UL>
-<!--End of Table of Child-Links-->
+
+<P>
 <BR><HR>
 
 </BODY>

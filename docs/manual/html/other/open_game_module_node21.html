@@ -49,7 +49,7 @@ C Code for SDCC</A>
 
 <P>
 The code below is based on using SDCC 4.X.X as the C complier with a custom crt0.s. Essentially for the sound chip you
-need to communicate with it by writing to the ports a address, then the data. You can also read from the ports to
+need to communicate with it by writing an address to it to use, then the data. You can also read from the it to
 verify the chip exists and that the OGM is working. Though for the OGM its chip does not have a read function. It is
 emulated for registers 0, 2, and 4 (0=1, 2=3, and 4=5) in the CPLD so all opcode/team pixelboy games will startup correctly.
 

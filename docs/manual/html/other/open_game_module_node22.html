@@ -49,7 +49,7 @@ Architecture</A>
 </H1>
 
 <P>
-The OGM architecture emulates the Super Game Module. This is done with a CPLD which performs the RAM (32KiB) and sound (YMZ284) selects. It also caches the the sound writes for later reads. For the RAM selects this is done by emulating the original 74LS138 decoders. This is used to disable the internal RAM with the register at 0x53 by writing one to bit zero. This will remove the internal 1KiB and extend the console to 24KiB. Then to swap out the ROM for RAM for an additional 8KiB the register 0x7F has a zero written to bit one (default value for the register is 0x0F). For the sound, all writes have an address cache to store the last address requested. This is due to the architecture of the original chip where the address is selected and then a read is performed. With the address set a subset of the register addresses are mapped to cache registers on the CPLD. See the section after this one for the mapping. This allows the cheaper YMZ284 to be used for sound generation. There are two resistors used to pad the output of the YMZ284 for acceptable levels when mixed with the original in the console. The console internally has a DC blocking capacitor, so no additional capacitors are needed.
+The OGM architecture emulates the Super Game Module. This is done with a CPLD which performs the RAM (32KiB) and sound (YMZ284) selects. It also caches the the sound writes for later reads. For the RAM selects this is done by emulating the original 74LS138 decoders. This is used to disable the internal RAM with the register at 0x53 by writing one to bit zero. This will remove the internal 1KiB and extend the console to 24KiB. Then to swap out the ROM for RAM for an additional 8KiB the register 0x7F has a zero written to bit one (default value for the register is 0x0F). For the sound, all writes to register 7 and lower have an address cache to store the last address requested. This is due to the architecture of the original chip where the address is selected and then a read is performed. With the address set a subset of the register addresses are mapped to cache registers on the CPLD. See the section after this one for the mapping. This allows the cheaper YMZ284 to be used for sound generation. There are two resistors used to pad the output of the YMZ284 for acceptable levels when mixed with the original in the console. The console internally has a DC blocking capacitor, so no additional capacitors are needed.
 
 <P>
 <BR><HR>
@@ -61,7 +61,31 @@ The OGM architecture emulates the Super Game Module. This is done with a CPLD wh
   HREF="open_game_module_node23.html">Fix for opcode games</A>
 </UL>
 <!--End of Table of Child-Links-->
-<BR><HR>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="open_game_module_node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="html.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="open_game_module_node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html116"
+  HREF="open_game_module_node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A
+ HREF="open_game_module_node23.html">Fix for opcode games</A>
+<B> Up:</B> <A
+ HREF="html.html">html</A>
+<B> Previous:</B> <A
+ HREF="open_game_module_node21.html">C Code for SDCC</A>
+ &nbsp; <B>  <A ID="tex2html117"
+  HREF="open_game_module_node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

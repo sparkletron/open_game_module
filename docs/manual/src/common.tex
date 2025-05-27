@@ -25,7 +25,7 @@
 \section{Introduction}
 
 \par
-Open Game Module is a open source expansion card for the Colecovision. This module is Super Game Module (SGM) compatable.
+Open Game Module (OGM) is a open source expansion card for the Colecovision. This module is Super Game Module (SGM) compatable.
 This means all SGM games will run when this module is used with a Colecovision. The sound is expanded with a Yamaha YMZ284
 instead of the GI AY chip.
 
@@ -33,7 +33,7 @@ instead of the GI AY chip.
 
 \par
 \begin{itemize}
-  \item 32 KB of RAM
+  \item 32KiB of RAM
   \item YMZ284 Sound Chip
   \item MAX7000S CPLD (EPM7064SLC)
   \item PCB, two layer
@@ -88,43 +88,43 @@ instead of the GI AY chip.
 \par
 This document assumes some Electrical Engineering knowledge. Building circuits is not
 trivial due to the mix of SMD and through hole components. What follow are general
-steps to build the Mini Colecovision
+steps to build the OGM.
 
 \begin{itemize}
   \item Create PCB from schematic/gerber/open\_game\_module.zip
   \item Populate PCB
   \item Power up and program CPLD
-  \item Build your own case
+  \item 3D print case
+  \item Assemble OGM circuit board and case.
 \end{itemize}
 
 \subsection{Directory Guide}
 
 \par
-Below highlights important folders from the root of the open\_game\_module.
+Below highlights important folders from the root of the OGM.
 
 \begin{enumerate}
   \item \textbf{docs} Contains all documentation related to this project.
     \begin{itemize}
       \item \textbf{datasheets} Contains all datasheets for components.
       \item \textbf{manual} Contains user manual and github page that are generated from the latex sources.
+      \item \textbf{schematic} PDF of the KiCAD schematic.
     \end{itemize}
-  \item \textbf{img} Contains images of the project
   \item \textbf{schematic} KiCAD v8.X schematic and PCB designs
     \begin{itemize}
       \item \textbf{gerber} Contains gerber files and archives for production.
-      \item \textbf{pdf} PDF schematic
     \end{itemize}
-  \item \textbf{src} CPLD firmware source
+  \item \textbf{src} CPLD bitstream source
     \begin{itemize}
       \item \textbf{open\_game\_module} Contains verilog source code and constraits
-      \item \textbf{quartus13sp01} Quartus project used to generate firmware.
+      \item \textbf{quartus13sp01} Quartus project used to generate bitstream. POF file located here.
     \end{itemize}
 \end{enumerate}
 
 \subsection{Dependencies}
 
 \par
-The following are the dependencies needed to build the firmware and PCB for the system.
+The following are the dependencies needed to build the bitstream and PCB for the system.
 
 \begin{itemize}
   \item Quartus 13.0 sp1
@@ -146,21 +146,18 @@ and Sound chips are also IP cores.
 \par
 This project uses the last version of Quartus that supports the MAX7000S series. The version is 13.0sp1.
 The project is located at src/quartus13sp01/. Once you have the project open please follow the softwares steps
-for building and programming the CPLD bitfile.
+for building and programming the CPLD bitstream.
 
 \subsection{PCB}
 
 \par
-The top has all the components of the circuit.
+The top has all the components of the circuit. The bottom contains none. This is a simple two layer board with a card edge. The card edge must have the pins of the socket bent to make contact and be soldered to it. The right angle connector is double the cost of the vertical one. Plus these are easier to obtain.
 
 \begin{figure}[h!]
 \caption{Top}
 \centering
 \includegraphics[width=0.90\textwidth,keepaspectratio]{img/ogm_top.png}
 \end{figure}
-
-\par
-The bottom has no components.
 
 \begin{figure}[h!]
 \caption{Bottom}
@@ -206,7 +203,7 @@ to clean the connectors.
 
 \subsection{Software Programming}
 \par
-Module Documentation has in\-depth details for using the open game module and register bits. You could do this in many different ways, but
+Module Documentation has in\-depth details for using the OGM register bits. You could do this in many different ways, but
 having the SDCC compiler know ahead of time that the RAM is there works well for me. There are different stragies that could be done for this
 but I feel this is the simplest way. Other methods can provide better detection of the OGM. The psudo code steps are as follows.
 
@@ -270,7 +267,7 @@ rst   0x0
 
 \par
 The code below is based on using SDCC 4.X.X as the C complier with a custom crt0.s. Essentially for the sound chip you
-need to communicate with it by writing to the ports a address, then the data. You can also read from the ports to
+need to communicate with it by writing an address to it to use, then the data. You can also read from the it to
 verify the chip exists and that the OGM is working. Though for the OGM its chip does not have a read function. It is
 emulated for registers 0, 2, and 4 (0=1, 2=3, and 4=5) in the CPLD so all opcode/team pixelboy games will startup correctly.
 
@@ -318,7 +315,7 @@ inline void readData(uint8_t data)
 \section{Architecture}
 
 \par
-The OGM architecture emulates the Super Game Module. This is done with a CPLD which performs the RAM (32KiB) and sound (YMZ284) selects. It also caches the the sound writes for later reads. For the RAM selects this is done by emulating the original 74LS138 decoders. This is used to disable the internal RAM with the register at 0x53 by writing one to bit zero. This will remove the internal 1KiB and extend the console to 24KiB. Then to swap out the ROM for RAM for an additional 8KiB the register 0x7F has a zero written to bit one (default value for the register is 0x0F). For the sound, all writes have an address cache to store the last address requested. This is due to the architecture of the original chip where the address is selected and then a read is performed. With the address set a subset of the register addresses are mapped to cache registers on the CPLD. See the section after this one for the mapping. This allows the cheaper YMZ284 to be used for sound generation. There are two resistors used to pad the output of the YMZ284 for acceptable levels when mixed with the original in the console. The console internally has a DC blocking capacitor, so no additional capacitors are needed.
+The OGM architecture emulates the Super Game Module. This is done with a CPLD which performs the RAM (32KiB) and sound (YMZ284) selects. It also caches the the sound writes for later reads. For the RAM selects this is done by emulating the original 74LS138 decoders. This is used to disable the internal RAM with the register at 0x53 by writing one to bit zero. This will remove the internal 1KiB and extend the console to 24KiB. Then to swap out the ROM for RAM for an additional 8KiB the register 0x7F has a zero written to bit one (default value for the register is 0x0F). For the sound, all writes to register 7 and lower have an address cache to store the last address requested. This is due to the architecture of the original chip where the address is selected and then a read is performed. With the address set a subset of the register addresses are mapped to cache registers on the CPLD. See the section after this one for the mapping. This allows the cheaper YMZ284 to be used for sound generation. There are two resistors used to pad the output of the YMZ284 for acceptable levels when mixed with the original in the console. The console internally has a DC blocking capacitor, so no additional capacitors are needed.
 
 \subsection{Fix for opcode games}
 

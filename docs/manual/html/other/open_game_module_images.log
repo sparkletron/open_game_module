@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.21)  29 MAY 2025 18:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.21)  29 MAY 2025 18:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -318,9 +318,9 @@ File: img/SPARKLETRON.png Graphic file (type png)
 Package pdftex.def Info: img/SPARKLETRON.png  used on input line 123.
 (pdftex.def)             Requested size: 310.4899pt x 25.20105pt.
 
-:tex2html_wrap357:lthtmlCropMarkHeight:=31.20105pt
+:tex2html_wrap361:lthtmlCropMarkHeight:=31.20105pt
 
-:tex2html_wrap357:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+:tex2html_wrap361:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 Preview: Tightpage -32890 -32890 32890 32890
 [1 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/SPARKLE
 TRON.png>]
@@ -329,9 +329,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 141.
 
-:tex2html_wrap_inline193:lthtmlCropMarkHeight:=6.0pt
+:tex2html_wrap_inline197:lthtmlCropMarkHeight:=6.0pt
 
-:tex2html_wrap_inline193:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+:tex2html_wrap_inline197:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [2]
 <img/ogm_top.png, id=15, 2371.86125pt x 1264.725pt>
 File: img/ogm_top.png Graphic file (type png)
@@ -339,9 +339,9 @@ File: img/ogm_top.png Graphic file (type png)
 Package pdftex.def Info: img/ogm_top.png  used on input line 148.
 (pdftex.def)             Requested size: 310.4979pt x 165.55861pt.
 
-:tex2html_wrap453:lthtmlCropMarkHeight:=171.55861pt
+:tex2html_wrap462:lthtmlCropMarkHeight:=171.55861pt
 
-:tex2html_wrap453:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+:tex2html_wrap462:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [3 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/ogm_top
 .png>]
 <img/ogm_bottom.png, id=20, 2371.86125pt x 1264.725pt>
@@ -350,9 +350,9 @@ File: img/ogm_bottom.png Graphic file (type png)
 Package pdftex.def Info: img/ogm_bottom.png  used on input line 154.
 (pdftex.def)             Requested size: 310.4979pt x 165.55861pt.
 
-:tex2html_wrap457:lthtmlCropMarkHeight:=171.55861pt
+:tex2html_wrap466:lthtmlCropMarkHeight:=171.55861pt
 
-:tex2html_wrap457:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+:tex2html_wrap466:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [4 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/ogm_bot
 tom.png>]
 <img/get_ogm.jpg, id=25, 2258.4375pt x 2258.4375pt>
@@ -361,9 +361,9 @@ File: img/get_ogm.jpg Graphic file (type jpg)
 Package pdftex.def Info: img/get_ogm.jpg  used on input line 164.
 (pdftex.def)             Requested size: 200.10063pt x 200.0802pt.
 
-:tex2html_wrap462:lthtmlCropMarkHeight:=206.0802pt
+:tex2html_wrap471:lthtmlCropMarkHeight:=206.0802pt
 
-:tex2html_wrap462:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+:tex2html_wrap471:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [5 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/get_ogm
 .jpg>]
 <img/open_exp.jpg, id=30, 2258.4375pt x 2258.4375pt>
@@ -372,9 +372,9 @@ File: img/open_exp.jpg Graphic file (type jpg)
 Package pdftex.def Info: img/open_exp.jpg  used on input line 170.
 (pdftex.def)             Requested size: 200.10063pt x 200.0802pt.
 
-:tex2html_wrap463:lthtmlCropMarkHeight:=206.0802pt
+:tex2html_wrap472:lthtmlCropMarkHeight:=206.0802pt
 
-:tex2html_wrap463:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+:tex2html_wrap472:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [6 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/open_ex
 p.jpg>]
 <img/insert_ogm.jpg, id=35, 2258.4375pt x 2258.4375pt>
@@ -383,9 +383,9 @@ File: img/insert_ogm.jpg Graphic file (type jpg)
 Package pdftex.def Info: img/insert_ogm.jpg  used on input line 176.
 (pdftex.def)             Requested size: 200.10063pt x 200.0802pt.
 
-:tex2html_wrap464:lthtmlCropMarkHeight:=206.0802pt
+:tex2html_wrap473:lthtmlCropMarkHeight:=206.0802pt
 
-:tex2html_wrap464:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+:tex2html_wrap473:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [7 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/insert_
 ogm.jpg>]
 <img/completed_ogm.jpg, id=41, 2258.4375pt x 2258.4375pt>
@@ -394,9 +394,9 @@ File: img/completed_ogm.jpg Graphic file (type jpg)
 Package pdftex.def Info: img/completed_ogm.jpg  used on input line 182.
 (pdftex.def)             Requested size: 200.10063pt x 200.0802pt.
 
-:tex2html_wrap465:lthtmlCropMarkHeight:=206.0802pt
+:tex2html_wrap474:lthtmlCropMarkHeight:=206.0802pt
 
-:tex2html_wrap465:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+:tex2html_wrap474:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [8 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/complet
 ed_ogm.jpg>] (./open_game_module_images.aux)
  ***********

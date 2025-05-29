@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.21)  29 MAY 2025 18:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.21)  29 MAY 2025 19:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -322,8 +322,8 @@ Package pdftex.def Info: img/SPARKLETRON.png  used on input line 123.
 
 :tex2html_wrap361:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 Preview: Tightpage -32890 -32890 32890 32890
-[1 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/SPARKLE
-TRON.png>]
+[1 </home/jconvertino/Projects/PUBLIC/open_game_module/docs/manual/img/SPARKLET
+RON.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 141.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -342,8 +342,8 @@ Package pdftex.def Info: img/ogm_top.png  used on input line 148.
 :tex2html_wrap462:lthtmlCropMarkHeight:=171.55861pt
 
 :tex2html_wrap462:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
-[3 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/ogm_top
-.png>]
+[3 </home/jconvertino/Projects/PUBLIC/open_game_module/docs/manual/img/ogm_top.
+png>]
 <img/ogm_bottom.png, id=20, 2371.86125pt x 1264.725pt>
 File: img/ogm_bottom.png Graphic file (type png)
 <use img/ogm_bottom.png>
@@ -353,8 +353,8 @@ Package pdftex.def Info: img/ogm_bottom.png  used on input line 154.
 :tex2html_wrap466:lthtmlCropMarkHeight:=171.55861pt
 
 :tex2html_wrap466:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
-[4 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/ogm_bot
-tom.png>]
+[4 </home/jconvertino/Projects/PUBLIC/open_game_module/docs/manual/img/ogm_bott
+om.png>]
 <img/get_ogm.jpg, id=25, 2258.4375pt x 2258.4375pt>
 File: img/get_ogm.jpg Graphic file (type jpg)
 <use img/get_ogm.jpg>
@@ -364,8 +364,8 @@ Package pdftex.def Info: img/get_ogm.jpg  used on input line 164.
 :tex2html_wrap471:lthtmlCropMarkHeight:=206.0802pt
 
 :tex2html_wrap471:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
-[5 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/get_ogm
-.jpg>]
+[5 </home/jconvertino/Projects/PUBLIC/open_game_module/docs/manual/img/get_ogm.
+jpg>]
 <img/open_exp.jpg, id=30, 2258.4375pt x 2258.4375pt>
 File: img/open_exp.jpg Graphic file (type jpg)
 <use img/open_exp.jpg>
@@ -375,8 +375,8 @@ Package pdftex.def Info: img/open_exp.jpg  used on input line 170.
 :tex2html_wrap472:lthtmlCropMarkHeight:=206.0802pt
 
 :tex2html_wrap472:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
-[6 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/open_ex
-p.jpg>]
+[6 </home/jconvertino/Projects/PUBLIC/open_game_module/docs/manual/img/open_exp
+.jpg>]
 <img/insert_ogm.jpg, id=35, 2258.4375pt x 2258.4375pt>
 File: img/insert_ogm.jpg Graphic file (type jpg)
 <use img/insert_ogm.jpg>
@@ -386,8 +386,8 @@ Package pdftex.def Info: img/insert_ogm.jpg  used on input line 176.
 :tex2html_wrap473:lthtmlCropMarkHeight:=206.0802pt
 
 :tex2html_wrap473:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
-[7 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/insert_
-ogm.jpg>]
+[7 </home/jconvertino/Projects/PUBLIC/open_game_module/docs/manual/img/insert_o
+gm.jpg>]
 <img/completed_ogm.jpg, id=41, 2258.4375pt x 2258.4375pt>
 File: img/completed_ogm.jpg Graphic file (type jpg)
 <use img/completed_ogm.jpg>
@@ -397,8 +397,8 @@ Package pdftex.def Info: img/completed_ogm.jpg  used on input line 182.
 :tex2html_wrap474:lthtmlCropMarkHeight:=206.0802pt
 
 :tex2html_wrap474:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
-[8 </home/jconvertino/Projects/PRIVATE/open_game_module/docs/manual/img/complet
-ed_ogm.jpg>] (./open_game_module_images.aux)
+[8 </home/jconvertino/Projects/PUBLIC/open_game_module/docs/manual/img/complete
+d_ogm.jpg>] (./open_game_module_images.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -422,7 +422,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  75i,5n,79p,251b,437s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on open_game_module_images.pdf (8 pages, 5379934 bytes).
+Output written on open_game_module_images.pdf (8 pages, 5378165 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  34 compressed objects within 1 object stream

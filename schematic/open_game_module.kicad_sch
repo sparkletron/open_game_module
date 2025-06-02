@@ -10291,7 +10291,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470R"
+		(property "Value" "2k2"
 			(at 130.81 117.094 90)
 			(effects
 				(font
